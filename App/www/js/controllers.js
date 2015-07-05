@@ -10,7 +10,7 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  
+
   $scope.alarms = Alarms.all();
   $scope.remove = function(alarm) {
     Alarms.remove(alarm);
@@ -19,6 +19,23 @@ angular.module('starter.controllers', [])
 
 .controller('AlarmDetailCtrl', function($scope, $stateParams, Alarms) {
   $scope.alarm = Alarms.get($stateParams.alarmId);
+})
+
+.controller('LoginCtrl', function($scope, $location, $ionicPopup) {
+    $scope.login = function() {
+        if(this.username === "gabo" && this.password === "gabo"){
+          console.log("LOGIN user: " + this.username + " - PW: " + this.password);
+          $location.path("/dash");
+        }else{
+            var alertPopup = $ionicPopup.alert({
+                title: 'Login failed!',
+                template: 'User or password incorrect'
+              });
+            alertPopup.then(function(res) {
+              console.log('Login Failed');
+            });
+        }
+    }
 })
 
 .controller('AccountCtrl', function($scope) {
