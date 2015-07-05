@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
   $scope.alarms = Alarms.all();
-    $ionicModal.fromTemplateUrl('/templates/modal-newalarm.html', {
+    $ionicModal.fromTemplateUrl('templates/modal-newalarm.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
@@ -71,8 +71,8 @@ angular.module('starter.controllers', [])
             }
             $scope.data = audioData;
           }, function(err) {
-            alert("ocurrio un error");
-            alert(err);
+            //alert("ocurrio un error");
+            //alert(err);
             // An error occurred. Show a message to the user
           });
         });
