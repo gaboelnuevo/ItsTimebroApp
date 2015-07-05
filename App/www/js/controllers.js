@@ -255,9 +255,10 @@ angular.module('starter.controllers', [])
                 $ionicLoading.hide();
                 $rootScope.user = user;
                 $rootScope.isLoggedIn = true;
-                $state.go('app.home', {
+                /*$state.go('app.home', {
                     clear: true
-                });
+                });*/
+                $state.go('tab.dash');
             },
             error: function(user, error) {
                 $ionicLoading.hide();
@@ -330,8 +331,16 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $state, $rootScope) {
   $scope.settings = {
     enableFriends: true
+  };
+  $scope.logout = function() {
+      Parse.User.logOut();
+      $rootScope.user = null;
+      $rootScope.isLoggedIn = false;
+      $state.go('welcome', {
+          clear: true
+      });
   };
 });
